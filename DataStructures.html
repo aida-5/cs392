@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #60799088;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+
+    --tran-02:all 0.2s ease;
+    --tran-03:all 0.3s ease;
+    --tran-04:all 0.4s ease;
+    --tran-05:all 0.5s ease;
+
+}
+body{
+    height: 100vh;
+    background: var(--body-color);
+}
+.logo{
+    text-align: center;
+    margin-top: -70px;
+ 
+ }
+ .small-image {
+    width: 250px;
+   
+}
+
+
+.container {
+    display: flex; /* Use flexbox to create a two-column layout */
+}
+
+.sidebar {
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width: 250px;
+    padding: 10px 14px;
+    background:var(--sidebar-color);
+    transition: var(--tran-05);
+
+}
+.sidebar.text{
+    font-size: 16px;
+    font-weight: 500px;
+    color:var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 0;
+    
+
+}
+
+
+.sidebar li{
+    height: 50px;
+ 
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+   
+
+}
+
+
+.bx-search.icon {
+    font-size: 30px; 
+}
+
+.sidebar li.icon,
+.sidebar li .textt{
+    color: var(--text-color) ;
+    transition: var(--tran-02 );
+   
+}
+.sidebar header{
+    position: relative;
+} 
+.bx-user-circle {
+    font-size: 55px; 
+    color: #393b3ed3;
+    margin-bottom: 3px;
+    float: left;
+    
+
+}
+
+  .name{
+  font-size: 19px;
+    color: #0659b1d3;
+  }
+.profession{
+   
+    font-size: 18px;
+    color: #0659b1d3;
+
+}
+
+
+
+.sidebar .search-box{
+    background: var(--primary-color-light) ;
+    border-radius: 10px; 
+    color:gray;
+    text-align: left;
+    
+}
+.bx-search.icon{
+    font-size: 19px
+  
+}
+.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background: var(--primary-color-light) ;
+   
+}
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+  
+
+}
+.sidebar li  a:hover{
+    background: var(--primary-color);
+
+}
+.sidebar li a:hover.icon,
+.sidebar li a:hover.text{
+    color: var(--sidebar-color);
+
+}
+.sidebar.menu-bar{
+    height: calc(100%-50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-text{
+    color: #0659b1d3;
+}
+
+.bx-log-out{
+    font-size: 24px;
+    color: #0659b1d3;
+    margin-right: 8px;
+}
+.bx-home{
+    font-size: 24px;
+    color: #0659b1d3;
+    margin-right: 8px;
+}
+.bx-calendar{
+    font-size: 24px;
+    color: #0659b1d3;
+    margin-right: 8px;
+    
+}
+.content h1 {
+    font-size: 35px; 
+    color: #0659b1d3;
+    text-align: center;
+}
+
+
+
+
+    </style>
+    <title>Data Structures</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="logo">
+        <img src="imges/eduBridgeLogo-1.png" alt="eduBridgeLogo-1" class="small-image">
+    </div>
+    <div class="container">
+        <nav class="sidebar">
+            <header>
+                <div class="text header-text">
+                    <a href="profile.html">
+                        <i class='bx bx-user-circle'></i>
+                    </a>
+                    <span class="name">name of user</span>
+                    <span class="profession">Teacher/Student</span>
+                </div>
+            </header>
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box"> 
+                        <i class='bx bx-search icon'></i>
+                        <input type="search" placeholder="Search...">
+                    </li>
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="mainPageTeach.html">
+                                <i class='bx bx-home'></i>
+                                <span class="text nav-text">Home</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="text nav-text">Content</span>
+                            </a>
+                        </li> 
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="text nav-text">Assignment</span>
+                            </a>
+                        </li>  
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="text nav-text">Announcement</span>
+                            </a>
+                        </li> 
+                        <li class="nav-link">
+                            <a href="#">
+                                <span class="text nav-text">Chat Board</span>
+                            </a>
+                        </li> 
+                        <li class="nav-link" id="virtual-class-link" style="cursor: pointer;">
+                            <span class="text nav-text">Virtual class</span>
+                        </li>
+                        <li class="nav-link">
+                            <a href="createClassroom.html">
+                                <span class="text nav-text">Create Classroom</span>
+                            </a>
+                        </li> 
+                        <li class="nav-link">
+                            <a href="Calendar.html">
+                                <i class='bx bx-calendar' ></i>
+                                <span class="text nav-text">Calendar</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="Help.html">
+                                <span class="text nav-text">Help</span>
+                            </a>
+                        </li> 
+                    </ul>
+                </div>
+                <div class="bottom-content"></div>
+                <li class="">
+                    <a href="login.html">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </nav>
+           
+    </div>
+    <div class="content">
+        <h1>Data Structures</h1>
+    </div>
+    <!-- Confirmation menu -->
+    <div id="confirmation-menu" style="display: none; position: fixed; top: 0; left: 0; width: 100%; background: #f0f0f0; text-align: center; padding: 10px;">
+        <span>Do you want to enter the virtual session?</span>
+        <button id="confirm-yes" style="margin: 10px;">Yes</button>
+        <button id="confirm-no">No</button>
+    </div>
+
+    <script>
+        // Function to display the confirmation menu when clicking on the "Virtual Class" link
+        const virtualClassLink = document.getElementById('virtual-class-link');
+        const confirmationMenu = document.getElementById('confirmation-menu');
+        const confirmYesButton = document.getElementById('confirm-yes');
+        const confirmNoButton = document.getElementById('confirm-no');
+
+        virtualClassLink.addEventListener('click', () => {
+            confirmationMenu.style.display = 'block';
+        });
+
+        // Function to handle "Yes" option
+        confirmYesButton.addEventListener('click', () => {
+            // Perform actions for "Yes" option, e.g., navigate to another page.
+            // Replace the next line with your actual URL.
+            window.location.href = 'VCTeacher.html';
+        });
+
+        // Function to hide the confirmation menu for "No" option
+        confirmNoButton.addEventListener('click', () => {
+            confirmationMenu.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

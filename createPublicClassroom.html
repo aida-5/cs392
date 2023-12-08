@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Public Classroom</title>
+  </head>
+  <body>
+    <h1>Create Public Classroom</h1>
+    <form id="classroomForm">
+      <label for="classroomTitle">Classroom Title:</label><br />
+      <input
+        type="text"
+        id="classroomTitle"
+        name="classroomTitle"
+        required
+      /><br />
+      <label for="classroomDescription">Classroom Description:</label><br />
+      <textarea
+        id="classroomDescription"
+        name="classroomDescription"
+        rows="4"
+        cols="50"
+        required
+      ></textarea
+      ><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <script src="createClassroom.js"></script>
+    <head>
+      <style>
+        body {
+          position: relative;
+          margin: 0;
+          padding: 0;
+        }
+
+        .top-right {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      </style>
+    </head>
+    <body>
+      <img src="imges/logo5.png" class="top-right" />
+    </body>
+  </body>
+</html>

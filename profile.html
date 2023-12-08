@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="profile.css">
+    <style>
+        /* Add your CSS styles for error messages here */
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile">
+        <h2>User Profile</h2>
+        
+        <div class="profile-info">
+            <p><strong>First Name:</strong> <span id="firstName">John</span></p>
+            <p><strong>Last Name:</strong> <span id="lastName">Doe</span></p>
+            <p><strong>Phone Number:</strong> <span id="phoneNumber">123-456-7890</span></p>
+            <p><strong>Email:</strong> <span id="email">john@example.com</span></p>
+            <p><strong>Bio:</strong> <span id="bio">This is my bio.</span></p>
+            <button id="edit-button" class="edit-button">Edit</button>
+        </div>
+        
+        <div class="edit-info" style="display: none;">
+            <h2>Edit Profile</h2>
+            <form id="profile-form">
+                <label for="editedFirstName">First Name:</label>
+                <input type="text" id="editedFirstName" name="editedFirstName">
+                <div class="error-message" id="firstNameError"></div>
+                <label for="editedLastName">Last Name:</label>
+                <input type="text" id="editedLastName" name="editedLastName">
+                <div class="error-message" id="lastNameError"></div>
+                <label for="editedPhoneNumber">Phone Number:</label>
+                <input type="tel" id="editedPhoneNumber" name="editedPhoneNumber">
+                <div class="error-message" id="phoneError"></div>
+                <label for="editedEmail">Email Address:</label>
+                <input type="email" id="editedEmail" name="editedEmail">
+                <div class="error-message" id="emailError"></div>
+                <label for="editedBio">Bio:</label>
+                <textarea id="editedBio" name="editedBio"></textarea>
+                <div class="error-message" id="bioError"></div>
+                <button id="save-button" class="save-button">Save</button>
+            </form>
+        </div>
+        
+        <button id="go-back-button" class="go-back-button">Home Page</button>
+    </div>
+
+    <script>
+        // Add an event listener to handle the "Go Back" button
+const goBackButton = document.getElementById("go-back-button");
+goBackButton.addEventListener("click", function () {
+    // Redirect to the home page
+    window.location.href = "mainPageTeach.html"; // Update this URL to your home page's URL
+});
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const editButton = document.getElementById("edit-button");
+            const editInfo = document.querySelector(".edit-info");
+            const saveButton = document.getElementById("save-button");
+
+            editButton.addEventListener("click", function () {
+                // Hide the profile info and show the edit form
+                document.querySelector(".profile-info").style.display = "none";
+                editInfo.style.display = "block";
+
+                // Populate the edit form with the current user data
+                const userInfo = {
+                    firstName: document.getElementById("firstName").textContent,
+                    lastName: document.getElementById("lastName").textContent,
+                    phoneNumber: document.getElementById("phoneNumber").textContent,
+                    email: document.getElementById("email").textContent,
+                    bio: document.getElementById("bio").textContent
+                };
+
+                document.getElementById("editedFirstName").value = userInfo.firstName;
+                document.getElementById("editedLastName").value = userInfo.lastName;
+                document.getElementById("editedPhoneNumber").value = userInfo.phoneNumber;
+                document.getElementById("editedEmail").value = userInfo.email;
+                document.getElementById("editedBio").value = userInfo.bio;
+            });
+
+            saveButton.addEventListener("click", function () {
+                // Reset error messages
+                document.getElementById("firstNameError").textContent = "";
+                document.getElementById("lastNameError").textContent = "";
+                document.getElementById("phoneError").textContent = "";
+                document.getElementById("emailError").textContent = "";
+                document.getElementById("bioError").textContent = "";
+
+                const editedFirstName = document.getElementById("editedFirstName").value.trim();
+                const editedLastName = document.getElementById("editedLastName").value.trim();
+                const editedPhoneNumber = document.getElementById("editedPhoneNumber").value.trim();
+                const editedEmail = document.getElementById("editedEmail").value.trim();
+                const editedBio = document.getElementById("editedBio").value.trim();
+
+                // First Name validation
+                if (editedFirstName === "") {
+                    document.getElementById("firstNameError").textContent = "First Name is required.";
+                    return;
+                }
+
+                // Last Name validation
+                if (editedLastName === "") {
+                    document.getElementById("lastNameError").textContent = "Last Name is required.";
+                    return;
+                }
+
+                // Phone Number validation (KSA format)
+                if (!isValidPhoneNumber(editedPhoneNumber)) {
+                    document.getElementById("phoneError").textContent = "Please enter a valid KSA phone number (e.g., 05XXXXXXXX).";
+                    return;
+                }
+
+                // Email validation
+                if (!isValidEmail(editedEmail)) {
+                    document.getElementById("emailError").textContent = "Please enter a valid email address.";
+                    return;
+                }
+
+                // Bio validation (no more than 200 words)
+                if (editedBio.split(/\s+/).length > 200) {
+                    document.getElementById("bioError").textContent = "Bio should contain no more than 200 words.";
+                    return;
+                }
+
+                // Update the user's information in the profile info
+                document.getElementById("firstName").textContent = editedFirstName;
+                document.getElementById("lastName").textContent = editedLastName;
+                document.getElementById("phoneNumber").textContent = editedPhoneNumber;
+                document.getElementById("email").textContent = editedEmail;
+                document.getElementById("bio").textContent = editedBio;
+
+                // Show the profile info and hide the edit form
+                document.querySelector(".profile-info").style.display = "block";
+                editInfo.style.display = "none";
+            });
+        });
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+            return emailRegex.test(email);
+        }
+
+        // Function to validate a KSA phone number format (starts with 05)
+        function isValidPhoneNumber(phoneNumber) {
+            const phoneRegex = /^05\d{8}$/;
+            return phoneRegex.test(phoneNumber);
+        }
+    </script>
+</body>
+</html>
